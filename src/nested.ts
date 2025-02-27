@@ -75,7 +75,7 @@ export function sumPoints(questions: Question[]): number {
 export function sumPublishedPoints(questions: Question[]): number {
     return questions.reduce(
         (sum: number, question: Question): number =>
-            question.published ? sum + 1 : sum,
+            question.published ? sum + question.points : sum,
         0,
     );
 }
@@ -98,7 +98,13 @@ id,name,options,points,published
  * Check the unit tests for more examples!
  */
 export function toCSV(questions: Question[]): string {
-    return "";
+    return [
+        "id,name,options,points,published",
+        ...questions.map(
+            (question: Question): string =>
+                `${question.id},${question.name},${question.options.length},${question.points},${question.published}`,
+        ),
+    ].join("\n");
 }
 
 /**
