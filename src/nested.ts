@@ -154,7 +154,7 @@ export function addNewQuestion(
     name: string,
     type: QuestionType,
 ): Question[] {
-    return [];
+    return questions.;
 }
 
 /***
