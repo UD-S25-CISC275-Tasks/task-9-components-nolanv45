@@ -22,7 +22,9 @@ export function StartAttempt(): React.JSX.Element {
                 </div>
                 <div>
                     <Button
-                        onClick={() => setProgress(false)}
+                        onClick={() => {
+                            setProgress(false);
+                        }}
                         disabled={!inProgress}
                     >
                         Stop Quiz
@@ -30,7 +32,9 @@ export function StartAttempt(): React.JSX.Element {
                 </div>
                 <div>
                     <Button
-                        onClick={() => setAttempts(attempts + 1)}
+                        onClick={() => {
+                            setAttempts(attempts + 1);
+                        }}
                         disabled={inProgress}
                     >
                         Mulligan

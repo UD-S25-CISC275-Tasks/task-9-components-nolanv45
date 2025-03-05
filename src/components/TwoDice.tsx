@@ -7,14 +7,15 @@ import { Button } from "react-bootstrap";
  * module (which returns a random decimal between 0 up until 1) in order
  * to produce a random integer between 1 and 6 (inclusive).
  */
-const [die1, setDie1] = useState<number>(1);
-const [die2, setDie2] = useState<number>(2);
 
 export function d6(): number {
     return 1 + Math.floor(Math.random() * 6);
 }
 
 export function TwoDice(): React.JSX.Element {
+    const [die1, setDie1] = useState<number>(1);
+    const [die2, setDie2] = useState<number>(2);
+
     let message = "";
     if (die1 === die2) {
         message = die1 === 1 ? "Lose" : "Win";
@@ -23,7 +24,6 @@ export function TwoDice(): React.JSX.Element {
     return (
         <div>
             <h3>Two Dice</h3>
-            <span data-testid="left-die">Die 1: {die1} </span>
 
             <span data-testid="left-die">Die 1: {die1} </span>
 
