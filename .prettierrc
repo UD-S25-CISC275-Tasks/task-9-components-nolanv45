@@ -1,5 +1,6 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "trailingComma": "none",
     "tabWidth": 4,
     "semi": true,
@@ -8,4 +9,8 @@
     "experimentalTernaries": true,
     "tabWidth": 4
 >>>>>>> origin
+=======
+    "experimentalTernaries": true,
+    "tabWidth": 4
+>>>>>>> origin/task-components
 }
