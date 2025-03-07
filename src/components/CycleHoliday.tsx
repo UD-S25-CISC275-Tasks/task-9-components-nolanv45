@@ -1,86 +1,57 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 
-type Holiday = {
-    name: string;
-    emoji: string;
-    next: keyof typeof nextHolidaysAlphabet;
+type Holiday =
+    | "Christmas"
+    | "Halloween"
+    | "Thanksgiving"
+    | "Easter"
+    | "Valentines";
+
+const nextHolidaysAlphabet: Record<Holiday, Holiday> = {
+    Christmas: "Easter",
+    Easter: "Halloween",
+    Halloween: "Thanksgiving",
+    Thanksgiving: "Valentines",
+    Valentines: "Christmas"
 };
 
-const nextHolidaysAlphabet: Record<string, Holiday> = {
-    Christmas: {
-        name: "Christmas",
-        emoji: "🎄",
-        next: "Easter"
-    },
-    Halloween: {
-        name: "Halloween",
-        emoji: "🎃",
-        next: "Thanksgiving"
-    },
-    Thanksgiving: {
-        name: "Thanksgiving",
-        emoji: "🦃",
-        next: "Valentines"
-    },
-    Easter: {
-        name: "Easter",
-        emoji: "🐇",
-        next: "Halloween"
-    },
-    Valentines: {
-        name: "Valentine's Day",
-        emoji: "❤️",
-        next: "Christmas"
-    }
+const nextHolidaysOrder: Record<Holiday, Holiday> = {
+    Christmas: "Valentines",
+    Valentines: "Easter",
+    Easter: "Halloween",
+    Halloween: "Thanksgiving",
+    Thanksgiving: "Christmas"
 };
-const nextHolidaysOrder: Record<string, Holiday> = {
-    Christmas: {
-        name: "Christmas",
-        emoji: "🎄",
-        next: "Valentines"
-    },
-    Halloween: {
-        name: "Halloween",
-        emoji: "🎃",
-        next: "Thanksgiving"
-    },
-    Thanksgiving: {
-        name: "Thanksgiving",
-        emoji: "🦃",
-        next: "Christmas"
-    },
-    Easter: {
-        name: "Easter",
-        emoji: "🐇",
-        next: "Halloween"
-    },
-    Valentines: {
-        name: "Valentine's Day",
-        emoji: "❤️",
-        next: "Easter"
-    }
+
+const holidayEmojis: Record<Holiday, string> = {
+    Christmas: "🎄",
+    Halloween: "🎃",
+    Thanksgiving: "🦃",
+    Easter: "🐇",
+    Valentines: "❤️"
 };
 
 export function CycleHoliday(): React.JSX.Element {
-    const [holiday, setHoliday] = useState<Holiday>(
-        nextHolidaysAlphabet.Christmas
-    );
+    const [holiday, setHoliday] = useState<Holiday>("Christmas");
 
     return (
         <div>
-            Cycle Holiday
+            <h3>Cycle Holiday</h3>
+
+            <p>Holiday: {holidayEmojis[holiday]}</p>
+
             <Button
                 onClick={() => {
-                    setHoliday(nextHolidaysAlphabet[holiday.next]);
+                    setHoliday((prev) => nextHolidaysAlphabet[prev]);
                 }}
             >
                 Advance by Alphabet
             </Button>
-            <p>Holiday: {holiday.emoji}</p>
+
             <Button
                 onClick={() => {
-                    setHoliday(nextHolidaysOrder[holiday.next]);
+                    setHoliday((prev) => nextHolidaysOrder[prev]);
                 }}
             >
                 Advance by Year

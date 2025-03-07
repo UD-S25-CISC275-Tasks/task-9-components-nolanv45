@@ -14,21 +14,10 @@ export function d6(): number {
 
 export function TwoDice(): React.JSX.Element {
     const [die1, setDie1] = useState<number>(1);
-    const [die2, setDie2] = useState<number>(2);
-
-    let message = "";
-    if (die1 === die2) {
-        message = die1 === 1 ? "Lose" : "Win";
-    }
+    const [die2, setDie2] = useState<number>(4);
 
     return (
         <div>
-            <h3>Two Dice</h3>
-
-            <span data-testid="left-die">Die 1: {die1} </span>
-
-            <span data-testid="right-die">Die 2: {die2}</span>
-
             <Button
                 onClick={() => {
                     setDie1(d6());
@@ -36,6 +25,7 @@ export function TwoDice(): React.JSX.Element {
             >
                 Roll Left
             </Button>
+            <span data-testid="left-die"> Left: {die1} </span>
 
             <Button
                 onClick={() => {
@@ -44,7 +34,16 @@ export function TwoDice(): React.JSX.Element {
             >
                 Roll Right
             </Button>
-            {message && <p>{message}</p>}
+
+            <span data-testid="right-die"> Right: {die2}</span>
+            <br />
+            <span>
+                {die1 === die2 && die2 !== 1
+                    ? "Win"
+                    : die1 === die2 && die1 === 1
+                      ? "Lose"
+                      : ""}
+            </span>
         </div>
     );
 }
