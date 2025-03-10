@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
@@ -26,6 +27,8 @@ yarn-error.log*
 =======
 =======
 >>>>>>> origin/task-components
+=======
+>>>>>>> 12d8c5ca68733b4497d1efc0551a3833f369f09f
 build/
 
 # Logs
@@ -161,8 +164,12 @@ package-lock.json
 .yarn/build-state.yml
 .yarn/install-state.gz
 <<<<<<< HEAD
+<<<<<<< HEAD
 .pnp.*
 >>>>>>> origin
 =======
 .pnp.*
 >>>>>>> origin/task-components
+=======
+.pnp.*
+>>>>>>> 12d8c5ca68733b4497d1efc0551a3833f369f09f
